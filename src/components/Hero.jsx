@@ -2,65 +2,42 @@ import { MapPin } from 'lucide-react';
 
 export default function Hero({ info }) {
   return (
-    <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 bg-white overflow-hidden border-b border-zinc-100">
-      <div className="container mx-auto px-4 relative z-20">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
-          
-          <div className="flex-1 text-center lg:text-left">
-            <div className="relative inline-block mb-10 select-none">
-              <h1 className="text-6xl md:text-8xl lg:text-9xl font-heading font-black uppercase text-zinc-900 tracking-tighter leading-none">
-                Foxy Nail
-              </h1>
-              <span className="absolute -bottom-4 right-0 md:-right-8 text-4xl md:text-6xl lg:text-7xl font-brush text-brand -rotate-6 transform drop-shadow-md">
-                studio
-              </span>
-            </div>
-            
-            <p className="text-xl md:text-2xl text-zinc-700 font-medium mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-              Место, где позаботятся о твоей красоте ✨
-            </p>
+    <section className="min-h-[90vh] bg-black flex flex-col items-center justify-center relative overflow-hidden pt-20">
+      {/* Фоновое мягкое свечение */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-neon/10 blur-[100px] rounded-full pointer-events-none"></div>
+      
+      <div className="relative z-10 text-center space-y-8 px-4 w-full max-w-4xl mx-auto flex flex-col items-center">
+        {/* Логотип */}
+        <div className="flex justify-center mb-4">
+          <img src="/icon.webp" alt="Studio7" className="h-40 md:h-56 drop-shadow-[0_0_20px_rgba(255,234,0,0.4)]" />
+        </div>
 
-            <div className="flex items-center justify-center lg:justify-start gap-3 mb-10 text-zinc-600 font-medium">
-              <MapPin className="text-brand shrink-0" strokeWidth={2} size={22} />
-              <span>{info.address}</span>
-            </div>
-            
-            <div className="flex flex-wrap justify-center lg:justify-start gap-4">
-              <button 
-                onClick={() => document.getElementById('booking-modal').showModal()}
-                className="px-8 py-4 bg-brand text-white font-bold text-lg uppercase tracking-wide rounded-md hover:bg-brand-dark transition-colors shadow-lg shadow-brand/20"
-              >
-                Онлайн запись
-              </button>
-              <a 
-                href="#portfolio" 
-                className="px-8 py-4 bg-white border border-zinc-200 text-zinc-900 font-bold text-lg uppercase tracking-wide rounded-md hover:border-zinc-900 hover:bg-zinc-50 transition-colors shadow-sm"
-              >
-                Примеры работ
-              </a>
-            </div>
-          </div>
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white uppercase tracking-tighter leading-none">
+          Твой новый <span className="text-neon font-marker lowercase tracking-normal">стиль</span>
+        </h1>
+        
+        <p className="text-zinc-400 max-w-lg mx-auto text-lg md:text-xl">
+          Создаем образы, которые говорят сами за себя. 
+        </p>
 
-          <div className="flex-1 relative w-full max-w-lg mx-auto lg:max-w-none">
-            <div className="relative aspect-[4/5] rounded-xl overflow-hidden shadow-2xl shadow-zinc-200">
-              {/* Path updated to /hero_photo.jpg */}
-              <img 
-                src="/hero_photo.jpg" 
-                alt="Интерьер Foxy Nail" 
-                className="w-full h-full object-cover"
-                onError={(e) => {
-                  e.target.style.display = 'none';
-                }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-              {Number(info.rating.replace(',', '.')) >= 4.5 && (
-                <div className="absolute bottom-6 left-6 bg-white/90 backdrop-blur-md text-zinc-900 font-bold px-5 py-3 rounded-lg shadow-lg flex items-center gap-2">
-                  <span className="text-brand text-xl">★</span> Рейтинг {info.rating}
-                </div>
-              )}
-            </div>
-          </div>
-          
+        <div className="flex items-center justify-center gap-3 text-zinc-500 font-medium">
+          <MapPin className="text-neon shrink-0" strokeWidth={1.5} size={20} />
+          <span>{info.address}</span>
+        </div>
+
+        <div className="pt-8 flex flex-col sm:flex-row justify-center gap-6 w-full sm:w-auto">
+          <button 
+            onClick={() => document.getElementById('booking-modal').showModal()}
+            className="w-full sm:w-auto px-10 py-5 border-2 border-neon text-neon font-bold uppercase tracking-widest hover:bg-neon hover:text-black hover:shadow-[0_0_25px_rgba(255,234,0,0.6)] transition-all duration-300"
+          >
+            Записаться
+          </button>
+          <a 
+            href="#portfolio" 
+            className="w-full sm:w-auto px-10 py-5 border border-zinc-800 text-white font-bold uppercase tracking-widest hover:border-zinc-500 hover:bg-zinc-900 transition-all duration-300"
+          >
+            Наши работы
+          </a>
         </div>
       </div>
     </section>
